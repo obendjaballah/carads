@@ -1,0 +1,160 @@
+{>"layout" /}
+
+{<body}
+	<br />
+	<button type="button" class="btn btn-primary btn-block add-ad" data-toggle="modal" data-target="#formModal">
+		<strong>Click here to place your ad ...</strong><br />
+	</button>
+
+	<br />
+
+	{#carads}
+		<div class="well">
+			<h4>{adtitle} 
+			<button class="btn btn-default pull-right" data-toggle="collapse" href="#carad_{id}" aria-expanded="false" aria-controls="carad_{id}">
+			<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+			</button></h4>
+
+			<div class="collapse" id="carad_{id}">
+			 	<br />
+			 	<br />
+			 	<p><strong>Car Brand: </strong>{carbrand}</p>
+			 	<p><strong>Car Model: </strong>{carmodel}</p>
+			 	<p><strong>Car Type: </strong>{type}</p>
+			 	<p><strong>Mileage: </strong>{mileage}</p>
+			 	<p><strong>Fuel: </strong>{fuel}</p>
+			 	<p><strong>Number Of Doors: </strong>{numberdoors}</p>
+			 	<p><strong>Car Sate: </strong>{state}</p>
+			 	<br />
+			 	<hr />
+
+			 	<button class="btn btn-default edit-carad" 
+			 	data-toggle="modal" 
+			 	data-target="#editFormModal"
+			 	data-id="{id}"
+			 	data-adtitle="{adtitle}"
+			 	data-carbrand="{carbrand}"
+			 	data-carmodel="{carmodel}"
+			 	data-type="{type}"
+			 	data-mileage="{mileage}"
+			 	data-fuel="{fuel}"
+			 	data-numberdoors="{numberdoors}"
+			 	data-state="{state}"
+			 	>
+			 		<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+			 	</button> 
+
+			 	<button class="btn btn-danger delete-carad" data-id="{id}">
+			 		<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+			 	</button>
+			</div>
+		</div>
+	{/carads}
+
+	<!-- Add Form Modal -->
+	<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	    	<form method="post" action="/add">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">Place Ad Here</h4>
+			      </div>
+			      <div class="modal-body">
+			        	<div class="form-group">
+				        	<label>Ad Title</label>
+				        	<input type="text" class="form-control" name="adtitle" />
+				        </div>
+				        <div class="form-group">
+				        	<label>Car Brand</label>
+				        	<textarea class="form-control" name="carbrand"></textarea>
+				        </div>
+				        <div class="form-group">
+				        	<label>Car Model</label>
+				        	<textarea class="form-control" name="carmodel"></textarea>
+				        </div>
+				        <div class="form-group">
+				        	<label>Type</label>
+				        	<textarea class="form-control" name="type"></textarea>
+				        </div>
+				        <div class="form-group">
+				        	<label>Mileage</label>
+				        	<textarea class="form-control" name="mileage"></textarea>
+				        </div>
+				        <div class="form-group">
+				        	<label>Fuel</label>
+				        	<textarea class="form-control" name="fuel"></textarea>
+				        </div>
+				        <div class="form-group">
+				        	<label>Doors Number</label>
+				        	<textarea class="form-control" name="numberdoors"></textarea>
+				        </div>
+				        <div class="form-group">
+				        	<label>Car State</label>
+				        	<textarea class="form-control" name="state"></textarea>
+				        </div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        <input type="submit" class="btn btn-primary" value="Save" />
+			      </div>
+	      </form>
+	    </div>
+	  </div>
+	</div>
+
+
+	<!-- Edit Form Modal -->
+	<div class="modal fade" id="editFormModal" tabindex="-1" role="dialog" aria-labelledby="editFormModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	    	<form method="post" action="/edit">
+	    		<input type="hidden" id="edit-form-id" name="id" />
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">Place Ad</h4>
+			      </div>
+			      <div class="modal-body">
+			        	<div class="form-group">
+				        	<label>Ad Title</label>
+				        	<input type="text" class="form-control" name="adtitle" id="edit-form-adtitle" />
+				        </div>
+				        <div class="form-group">
+				        	<label>Car Brand</label>
+				        	<textarea class="form-control" name="carbrand" id="edit-form-carbrand"></textarea>
+				        </div>
+				        <div class="form-group">
+				        	<label>Car Model</label>
+				        	<textarea class="form-control" name="carmodel" id="edit-form-carmodel"></textarea>
+				        </div>
+				        </div>
+				        <div class="form-group margin">
+				        	<label>Car Type</label>
+				        	<textarea class="form-control" name="type" id="edit-form-type"></textarea>
+				        </div>
+				        <div class="form-group margin">
+				        	<label>Mileage</label>
+				        	<textarea class="form-control" name="mileage" id="edit-form-mileage"></textarea>
+				        </div>
+				        <div class="form-group margin">
+				        	<label>Fuel</label>
+				        	<textarea class="form-control" name="fuel" id="edit-form-fuel"></textarea>
+				        </div>
+				        <div class="form-group margin">
+				        	<label>Number Of Doors</label>
+				        	<textarea class="form-control" name="numberdoors" id="edit-form-numberdoors"></textarea>
+				        </div>
+				        <div class="form-group margin">
+				        	<label>Car State</label>
+				        	<textarea class="form-control" name="state" id="edit-form-state"></textarea>
+				        </div>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        <input type="submit" class="btn btn-primary" value="Save" />
+			      </div>
+	      </form>
+	    </div>
+	  </div>
+	</div>
+{/body}
